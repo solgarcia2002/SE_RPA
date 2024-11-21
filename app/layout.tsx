@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { roboto } from "./fonts/fonts";
 import Providers from "./providers";
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import "./globals.css";
 
 
