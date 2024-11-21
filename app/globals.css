@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --text-grey: #4A4A4A;
+  --darkGreen: #008C3A;
+  --lightGreen: #5AB542;
+  --lighter: #DFFFD6;
+  --danger: #FF4747;
+}
+
+
+
+body {
+  color: var(--text-grey);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
