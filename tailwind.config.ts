@@ -15,7 +15,8 @@ const config: Config = {
       darkGreen:"#008C3A",
       lightGreen:'#5AB542',
       lighter:'#DFFFD6',
-      danger:'#FF4747'
+      danger:'#FF4747',
+      white:'#FFFFFF'
     }
   },
   darkMode: "class",
