@@ -6,7 +6,7 @@ export const roboto = Roboto({
   subsets: ['latin']
 })
 
-export const monserrat = Montserrat({
+export const montserrat = Montserrat({
   weight:['400'],
   subsets:['latin']
 })
