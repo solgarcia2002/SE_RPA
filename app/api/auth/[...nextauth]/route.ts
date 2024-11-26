@@ -2,6 +2,11 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 
 import GoogleProvider from 'next-auth/providers/google';
 
+const allowedEmails = [
+  "rbkheredia90@gmail.com",
+  "empowerit.io@gmail.com"
+];
+
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
@@ -14,7 +19,11 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async signIn({ account, profile }) {
-      return true;
+      if (account && account.provider === "google" && profile && profile.email) {
+        return profile.email_verified && (profile.email.endsWith("@servientrega.us") ||
+        allowedEmails.includes(profile.email))
+      }
+      return true
     },
   },
   secret: process.env.NEXTAUTH_SECRET,

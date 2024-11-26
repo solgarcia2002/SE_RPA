@@ -1,0 +1,18 @@
+.default {
+  padding: 8px 16px;
+  color: var(--darkGreen);
+  border-radius: 0.25rem
+}
+
+.default:hover, .emphasis:hover {
+  background-color: var(--darkGreen);
+  transition: 0.5s ease ;
+  color: white;
+}
+
+.emphasis {
+  padding: 8px 16px;
+  color: var(--darkGreen);
+  border-radius: 0.25rem;
+  background-color: var(--lighter);
+}
