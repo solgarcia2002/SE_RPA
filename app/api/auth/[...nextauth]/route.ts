@@ -1,11 +1,7 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 
-import GoogleProvider from 'next-auth/providers/google';
-
-const allowedEmails = [
-  "rbkheredia90@gmail.com",
-  "empowerit.io@gmail.com"
-];
+const allowedEmails = ["rbkheredia90@gmail.com", "empowerit.io@gmail.com"];
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -15,19 +11,36 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
-      return session;
+    async session({ session, token }) {
+      if (!token || !allowedEmails.includes(token.email || "")) {
+        return {
+          ...session,
+          user: undefined,
+        };
+      }
+
+      return {
+        ...session,
+        user: {
+          email: token.email,
+          name: session.user?.name || null,
+          image: session.user?.image || null,
+        },
+      };
     },
     async signIn({ account, profile }) {
       if (account && account.provider === "google" && profile && profile.email) {
-        return profile.email_verified && (profile.email.endsWith("@servientrega.us") ||
-        allowedEmails.includes(profile.email))
+        return (
+          profile.email_verified &&
+          (profile.email.endsWith("@servientrega.us") ||
+            allowedEmails.includes(profile.email))
+        );
       }
-      return true
+      return false;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-}
+};
 
 const handler = NextAuth(authOptions);
 
