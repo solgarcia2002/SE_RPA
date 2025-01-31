@@ -6,7 +6,6 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Navbar from "@/components/navbar";
-import { redirect } from "next/navigation";
 
 
 
