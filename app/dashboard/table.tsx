@@ -123,7 +123,7 @@ export default  function TableInfo({ session}:TableInfoProps) {
         return (
           <div className="flex items-center gap-2">
             {item.archivoResultado && (
-              <a href={`https://${bucketName}.s3.amazonaws.com/${item.archivoResultado}`} download target="blank">
+              <a href={`${item.archivoResultado}`} download target="blank">
                 <FontAwesomeIcon icon={faDownload} className="text-darkGreen" />
               </a>
             )}
