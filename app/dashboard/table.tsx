@@ -115,7 +115,6 @@ export default  function TableInfo({ session}:TableInfoProps) {
 
   // 🔹 Render Table Cells
   const renderCell = (item: TableData, columnKey: string) => {
-    const bucketName = process.env.AWS_BUCKET_NAME || 'se-rpa-paypal';
     const cellValue = item[columnKey as keyof TableData];
 
     switch (columnKey) {
