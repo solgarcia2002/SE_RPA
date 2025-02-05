@@ -4,7 +4,6 @@ import Providers from "./providers";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import Navbar from "@/components/navbar";
 
 
@@ -19,7 +18,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   
   return (

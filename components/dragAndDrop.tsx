@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
-const FileDropzone = () => {
+interface FileDropzoneProps {
+  onFileUpload: (file: File) => void;
+}
+
+const FileDropzone: React.FC<FileDropzoneProps> = ({ onFileUpload }) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log("Accepted files:", acceptedFiles);
-  }, []);
+    if (acceptedFiles.length > 0) {
+      console.log("✅ Archivo recibido:", acceptedFiles[0]);
+      onFileUpload(acceptedFiles[0]); // Enviar el archivo al padre
+    }
+  }, [onFileUpload]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -20,7 +27,7 @@ const FileDropzone = () => {
   return (
     <div
       {...getRootProps()}
-      className={`flex flex-col items-center justify-center border-2 border-dashed  rounded-md p-6 hover:cursor-pointer ${
+      className={`flex flex-col items-center justify-center border-2 border-dashed rounded-md p-6 hover:cursor-pointer ${
         isDragActive ? "border-darkGreen bg-lightGreen" : "border-lightGreen bg-white"
       }`}
     >

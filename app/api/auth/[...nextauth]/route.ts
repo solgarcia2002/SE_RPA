@@ -1,9 +1,9 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 const allowedEmails = ["rbkheredia90@gmail.com", "empowerit.io@gmail.com"];
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -12,10 +12,10 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
-      if (!token || !allowedEmails.includes(token.email || "")) {
+      if (!token.email || !allowedEmails.includes(token.email)) {
         return {
           ...session,
-          user: undefined,
+          user: undefined, // Prevent unauthorized users from getting a session
         };
       }
 
@@ -29,7 +29,7 @@ export const authOptions: NextAuthOptions = {
       };
     },
     async signIn({ account, profile }) {
-      if (account && account.provider === "google" && profile && profile.email) {
+      if (account?.provider === "google" && profile?.email) {
         return (
           profile.email_verified &&
           (profile.email.endsWith("@servientrega.us") ||
@@ -40,8 +40,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-};
+});
 
-const handler = NextAuth(authOptions);
-
+// ✅ Use a default export for Next.js App Router
 export { handler as GET, handler as POST };

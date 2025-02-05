@@ -1,6 +1,5 @@
 import { getServerSession } from 'next-auth';
 import { montserrat } from '../app/fonts/fonts';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { User } from '@nextui-org/react';
 import SignOutButton from './signOutButton';
 
@@ -10,7 +9,7 @@ type HeaderTypes = {
 };
 
 export default async function Header({ title, subtitle }: HeaderTypes) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   return (
     <div className="flex w-full py-14 justify-between px-10">

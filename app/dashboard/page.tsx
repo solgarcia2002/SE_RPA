@@ -1,22 +1,19 @@
-
-import { getServerSession } from "next-auth"
-import { authOptions } from "../api/auth/[...nextauth]/route"
 import Header from "@/components/header";
 import TableInfo from "./table";
 import { redirect } from "next/navigation";
+import { getSessionData } from "../api/getServerSession";
 
-export default async function Dashboard(){
+export default async function Dashboard() {
+  const session = await getSessionData(); 
 
-
-  const session = await getServerSession(authOptions);
-
-  if(!session){
-    redirect('/login')
+  if (!session) {
+    redirect("/login");
   }
-  return(
+
+  return (
     <div className="w-full">
-      <Header title="Dashboard" subtitle="Customer Support" />
-      <TableInfo />
+      <Header title="PayPal Robot" subtitle="Automatización del proceso Administrativo de PayPal" />
+      <TableInfo session={session} />
     </div>
-  )
+  );
 }

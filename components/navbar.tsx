@@ -6,7 +6,7 @@ import { faLayerGroup } from "@fortawesome/free-solid-svg-icons"
 const links = [
   {
     id: 1,
-    name: "Dashboard",
+    name: "PayPal RPA",
     link: "/dashboard",
     icon: <FontAwesomeIcon icon={faLayerGroup} />,
   }
