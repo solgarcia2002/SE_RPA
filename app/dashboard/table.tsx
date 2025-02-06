@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Button from "@/components/button";
 import {
   faArrowUpFromBracket,
   faClipboard,
@@ -20,11 +19,12 @@ import {
   Spinner
 } from "@nextui-org/react";
 import { roboto } from "../fonts/fonts";
-import ProgressBar from "@/components/progressBar";
-import FileDropzone from "@/components/dragAndDrop";
+import Button from "../../components/button";
+import ProgressBar from "../../components/progressBar";
+import FileDropzone from "../../components/dragAndDrop";
 import { Session } from 'next-auth';
 
-const API_URL = "http://localhost:3001/api/procesar-paypal"; // Update with your real API
+const API_URL = process.env.SE_API_URL ||  "http://localhost:3001/api/procesar-paypal"; 
 
 // Define Types for API Data
 interface TableData {
