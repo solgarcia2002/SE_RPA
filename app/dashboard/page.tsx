@@ -1,12 +1,13 @@
 import Header from "../../components/header";
-import TableInfo from "./table";
 import { redirect } from "next/navigation";
-import { getSessionData } from "../api/getServerSession";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../lib/auth";
+import dynamic from 'next/dynamic';
 
 export default async function Dashboard() {
-  const session = await getSessionData(); 
-
-  if (!session) {
+  const session = await getServerSession(authOptions);
+  const TableInfo= dynamic(() => import('./table'), { ssr: false });
+  if (!session?.user) {
     redirect("/login");
   }
 
