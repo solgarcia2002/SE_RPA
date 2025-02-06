@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "../../components/header";
 import TableInfo from "./table";
 import { redirect } from "next/navigation";
 import { getSessionData } from "../api/getServerSession";

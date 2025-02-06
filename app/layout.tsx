@@ -4,7 +4,7 @@ import Providers from "./providers";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import Navbar from "@/components/navbar";
+import Navbar from "../components/navbar";
 
 
 

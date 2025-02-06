@@ -1,5 +1,5 @@
 
-import GoogleLoginButton from "@/components/loginGoogleButton";
+import GoogleLoginButton from "../../components/loginGoogleButton";
 import Image from "next/image";
 
 export default function Login(){
