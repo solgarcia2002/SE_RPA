@@ -183,9 +183,9 @@ export default  function TableInfo({ session}:TableInfoProps) {
           ))}
         </TableHeader>
         <TableBody emptyContent={loading ? "Loading data..." : "No data"} items={tableData}>
-          {(item) => (
+          {(item:TableData) => (
             <TableRow key={item.archivoProcesado}> 
-              {(columnKey) => <TableCell>{renderCell(item, columnKey.toString())}</TableCell>}
+              {(columnKey:TableData) => <TableCell>{renderCell(item, columnKey.toString())}</TableCell>}
             </TableRow>
           )}
         </TableBody>
