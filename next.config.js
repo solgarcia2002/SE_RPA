@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  serverRuntimeConfig: {},  // Asegúrate de no tener configuraciones SSL aquí
+  serverRuntimeConfig: {}, 
   publicRuntimeConfig: {},
   images: {
     unoptimized: true,
@@ -16,17 +16,19 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  /**
-   * @param {import('webpack').Configuration} config
-   * @param {{ isServer: boolean }} options
-   */
   webpack: (config, { isServer }) => {
+    // ✅ Optimize performance for large builds
+    config.performance = {
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
+    };
+
     if (!isServer) {
       config.resolve = {
         ...config.resolve,
         fallback: {
           ...config.resolve.fallback,
-          fs: false, // ✅ Solución para errores relacionados con 'fs' en el cliente
+          fs: false,
         },
       };
     }
