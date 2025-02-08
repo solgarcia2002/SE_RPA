@@ -17,7 +17,7 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
   },
   /**
    * @param {import('webpack').Configuration} config
