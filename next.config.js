@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
+  serverRuntimeConfig: {},  // Asegúrate de no tener configuraciones SSL aquí
+  publicRuntimeConfig: {},
   images: {
     unoptimized: true,
-  },
-  experimental: {
-    appDir: true,
-    serverActions: true,
   },
   env: {
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
