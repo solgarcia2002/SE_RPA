@@ -31,6 +31,6 @@
     ".next/types/**/*.ts",
     "types/**/*.d.ts",
     "node_modules/@types/**/*.d.ts"  
-  ],
+, "next.config.js"  ],
   "exclude": ["node_modules"]
 }
