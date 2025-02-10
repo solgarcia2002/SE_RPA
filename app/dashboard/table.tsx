@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
   Spinner
-} from "@heroui-org/react";
+} from "@nextui-org/react";
 import { roboto } from "../fonts/fonts";
 import Button from "../../components/button";
 import ProgressBar from "../../components/progressBar";
