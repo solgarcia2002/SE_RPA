@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
   output: 'standalone', 
   reactStrictMode: false,
   serverRuntimeConfig: {}, 
@@ -18,6 +17,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  swcMinify: false, // Desactiva el minificador SWC
 };
 
 module.exports = nextConfig;
