@@ -1,1 +1,1 @@
-declare module "@heroui-org/react";
+declare module "@nextui-org/react";

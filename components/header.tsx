@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { montserrat } from '../app/fonts/fonts';
-import { User } from '@heroui-org/react';
+import { User } from '@nextui-org/react';
 import SignOutButton from './signOutButton';
 
 type HeaderTypes = {
